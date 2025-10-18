@@ -1,0 +1,19 @@
+{
+  "name": "wpress-cloud-extractor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node server.js",
+    "build": "echo 'no build step'"
+  },
+  "dependencies": {
+    "archiver": "^6.0.1",
+    "busboy": "^1.6.0",
+    "express": "^4.19.2",
+    "fs-extra": "^11.2.0",
+    "morgan": "^1.10.0",
+    "tar-stream": "^3.1.7"
+  }
+}
