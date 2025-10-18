@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: wpress-cloud-extractor
+    env: node
+    plan: standard         # ~$25/mo, 2 GB RAM
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MAX_UPLOAD_MB
+        value: "1024"     # 1 GB limit
+      - key: TMP_DIR
+        value: "/tmp"     # use container temp disk
+      - key: CORS_ORIGIN
+        value: "*"        # lock down later to your domain
+    healthCheckPath: /health
