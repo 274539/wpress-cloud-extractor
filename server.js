@@ -242,6 +242,15 @@ app.post('/convert', async (req, res) => {
     }
 
     try {
+      const stats = await fs.promises.stat(tmpFilePath);
+      const sizeMB = (stats.size / 1024 / 1024).toFixed(1);
+      const entry = `[${new Date().toISOString()}] ${req.ip || 'unknown'} ${filename} ${sizeMB}MB\n`;
+      await fs.promises.appendFile(LOG_PATH, entry);
+    } catch (e) {
+      console.warn('log fail', e);
+    }
+
+    try {
       // Quick central directory sniff: read the last ~200KB of the file
       const stat = await fs.promises.stat(tmpPath);
       const tailSize = Math.min(stat.size, 200 * 1024);
