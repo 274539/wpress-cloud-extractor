@@ -9,7 +9,9 @@ import { pipeline } from 'stream/promises';
 import zlib from 'zlib';
 import tar from 'tar-stream';
 import archiver from 'archiver';
+import fs from 'fs';
 
+const LOG_PATH = '/tmp/upload_log.txt';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
